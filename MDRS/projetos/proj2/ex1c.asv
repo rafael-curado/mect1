@@ -1,0 +1,136 @@
+%% service 1
+fprintf("starting 1\n");
+clear all
+close all
+clc
+
+load('InputDataProject2.mat')
+nNodes = size(Nodes, 1);
+nLinks = size(Links, 1);
+nFlows1 = size(T1, 1);
+
+k = 2;
+sP = cell(1, nFlows1);
+nSP = zeros(1, nFlows1);
+for f = 1 : nFlows1
+    [shortestPath, totalCost] = kShortestPath(L, T1(f, 1), T1(f, 2), k);
+    sP{f} = shortestPath;
+    nSP(f) = length(totalCost);
+    % candidate paths for each flow
+    %fprintf('Candidate paths for Flow %d:\n', f);
+    %for i = 1 : k
+        %fprintf('%d ', sP{f}{i});
+        %fprintf('\n');
+    %end
+end
+
+t = tic;
+timeLimit = 10;
+bestLoad = inf;
+bestEnergy = inf;
+contador = 0;
+somador = 0;
+while toc(t) < timeLimit
+    % greedy randomized start
+    [sol, load, Loads, energy] = greedyRandomizedStrategy(nNodes, Links, T1, sP, nSP);
+
+     [sol, load, Loads, energy] = HillClimbingStrategy(nNodes, Links, T, sP, nSP, sol, load, Loads, energy, L, alfa);
+
+    if load < bestLoad
+        bestSol = sol;
+        bestLoad = load;
+        bestLoads = Loads;
+        bestEnergy = energy;
+        bestLoadTime = toc(t);
+    end
+    contador = contador + 1;
+    somador = somador + load;
+end
+
+% Calculate additional metrics
+averageLinkLoad = somador / contador;
+
+sleepingNodes = '';
+for i = 1 : length(bestLoads)
+    if max(bestLoads(i, 3:4)) == 0
+        sleepingNodes = append(sleepingNodes, '{', num2str(bestLoads(i,1)), ',', num2str(bestLoads(i,2)), '}');
+    end
+end
+
+fprintf('\nService 1:\n')
+fprintf('\tWorst Link Load = %.2f\n', bestLoad);
+fprintf('\tAverage Link Load = %.2f Gbps\n', averageLinkLoad);
+fprintf('\tNumber of Cycles Run by the Algorithm = %d\n', contador);
+fprintf('\tList of links in sleeping mode:%s\n', sleepingNodes);
+fprintf('\tTime = %.7f\n', bestLoadTime);
+
+% ----------------------------- Service 2 ----------------------------- 
+%% service 2
+fprintf("starting 2\n");
+clear all
+close all
+clc
+
+load('InputDataProject2.mat')
+nNodes = size(Nodes, 1);
+nLinks = size(Links, 1);
+nFlows1 = size(T2, 1);
+
+k = 2;
+sP = cell(1, nFlows1);
+nSP = zeros(1, nFlows1);
+for f = 1 : nFlows1
+    [shortestPath, totalCost] = kShortestPath(L, T2(f, 1), T2(f, 2), k);
+    sP{f} = shortestPath;
+    nSP(f) = length(totalCost);
+    % candidate paths for each flow
+    %fprintf('Candidate paths for Flow %d:\n', f);
+    %for i = 1 : k
+        %fprintf('%d ', sP{f}{i});
+        %fprintf('\n');
+    %end
+end
+
+t = tic;
+timeLimit = 10;
+bestLoad = inf;
+bestEnergy = inf;
+contador = 0;
+somador = 0;
+alfa = 1;
+while toc(t) < timeLimit
+    % greedy randomized start
+    [sol, load, Loads, energy] = greedyRandomizedStrategy(nNodes, Links, T2, sP, nSP, L, alfa);
+
+    [sol, load, Loads, energy] = HillClimbingStrategy(nNodes, Links, T2, sP, nSP, sol, load, Loads, energy, L, alfa);
+
+    if load < bestLoad
+        bestSol = sol;
+        bestLoad = load;
+        bestLoads = Loads;
+        bestEnergy = energy;
+        bestLoadTime = toc(t);
+    end
+    contador = contador + 1;
+    somador = somador + load;
+end
+
+% Calculate additional metrics
+averageLinkLoad = somador / contador;
+
+sleepingNodes = '';
+for i = 1 : length(bestLoads)
+    if max(bestLoads(i, 3:4)) == 0
+        sleepingNodes = append(sleepingNodes, '{', num2str(bestLoads(i,1)), ',', num2str(bestLoads(i,2)), '}');
+    end
+end
+
+fprintf('\nService 2:\n')
+fprintf('\tWorst Link Load = %.2f\n', bestLoad);
+fprintf('\tEnergy = %.2f', bestEnergy);
+fprintf('\tAverage Link Load = %.2f Gbps\n', averageLinkLoad);
+fprintf('\tNumber of Cycles Run by the Algorithm = %d\n', contador);
+fprintf('\tList of links in sleeping mode:%s\n', sleepingNodes);
+fprintf('\tTime = %.7f\n', bestLoadTime);
+
+

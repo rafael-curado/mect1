@@ -1,0 +1,3 @@
+/home/rafael/Desktop/IC/trab2/CMakeFiles/DisplayImage.dir
+/home/rafael/Desktop/IC/trab2/CMakeFiles/edit_cache.dir
+/home/rafael/Desktop/IC/trab2/CMakeFiles/rebuild_cache.dir

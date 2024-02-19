@@ -1,0 +1,165 @@
+% Task 1
+clear all
+close all
+clc
+%% 1 a)
+% Consider the solution where all flows are routed through the path with the minimum
+% propagation delay of the network. Is this a feasible solution? Justify
+% your answer.
+
+% R: Routing all flows through the minimum propagation delay path may not be feasible due to 
+% potential issues with throughput, router capacity, energy consumption, link capacity, 
+% bidirectional traffic, and topology constraints. A comprehensive analysis considering 
+% these factors is necessary to optimize overall network performance.
+
+load('InputDataProject2.mat')
+
+v = 2e5; % speed of light in fibers in km/sec
+D = L / v;
+
+routerCapacity = 1000; % 1 Tbps = 1000 Gbps
+linkCapacity = 100;   % 100 Gbps
+
+% minimum delay path
+[minDelay, startNode] = min(D(:, 1));
+endNode = find(D(:, end) == min(D(:, end)));
+
+totalThroughput = sum([T1(:, 3:4); T2(:, 3:4)]);
+
+% capacity of the minimum delay path
+minDelayPathCapacity = min(routerCapacity, linkCapacity) * (startNode ~= endNode);
+
+feasibility = minDelayPathCapacity >= totalThroughput;
+
+fprintf('Routing all flows through the minimum delay path is %s.\n', FeasibleOrNot(feasibility, 'Feasible', 'Not Feasible'));
+
+%function result = FeasibleOrNot(condition, true, false)
+ %   if condition
+  %      result = true;
+   % else
+    %    result = false;
+    %end
+%end
+
+
+%% 1 b)
+fprintf('1 b)\n');
+
+clear all
+close all
+clc
+
+load('InputData2.mat')
+nNodes = size(Nodes, 1);
+nLinks = size(Links, 1);
+nFlows = size(T, 1);
+
+k = 6;
+sP = cell(1, nFlows);
+nSP = zeros(1, nFlows);
+for f = 1 : nFlows
+    % Use k-shortest path algorithm to determine candidate routing paths
+    [shortestPath, totalCost] = kShortestPath(L, T(f, 1), T(f, 2), k);
+    sP{f} = shortestPath;
+    nSP(f) = length(totalCost);
+
+    % candidate paths for each flow
+    fprintf('Candidate paths for Flow %d:\n', f);
+    for i = 1:k
+        fprintf('%d ', sP{f}{i});
+        fprintf('\n');
+    end
+end
+
+t = tic;
+timeLimit = 15;
+bestLoad = inf;
+contador = 0;
+somador = 0;
+alfa = 1;
+bestEnergy = inf;
+
+while toc(t) < timeLimit
+    % Greedy randomized start
+    [sol, load, Loads, energy] = greedyRandomizedStrategy(nNodes, Links, T, sP, nSP, L, alfa);
+ 
+    while energy == inf
+        [sol, load, Loads, energy] = greedyRandomizedStrategy(nNodes, Links, T, sP, nSP, L, alfa);
+    end
+
+    % Hill Climbing
+    [sol, load, Loads, energy] = HillClimbingStrategy(nNodes, Links, T, sP, nSP, sol, load, Loads, energy, L, alfa);
+
+    % Check if current solution is better
+    if energy < bestEnergy
+        bestSol = sol;
+        bestLoad = load;
+        bestLoads = Loads;
+        bestEnergy = energy;
+        bestLoadTime = toc(t);
+    end
+    contador = contador + 1;
+end
+
+fprintf('Best Link Load: %.2f Gbps\n', bestLoad);
+fprintf('Best Energy: %.2f\n', bestEnergy);
+fprintf('Best Load Time: %.2f seconds\n', bestLoadTime);
+
+fprintf('E = %.2f\tW = %.2f Gbps\tNo. sols = %d\ttime = %.2f\n', bestEnergy, bestLoad, contador, bestLoadTime);
+
+% Results:
+    % Best Link Load: 9.90 Gbps
+    % Best Energy: 277.70
+    % Best Load Time: 3.44 seconds
+    % E = 277.70	W = 9.90 Gbps	No. sols = 1727	time = 3.44
+
+%% 1 c)
+fprintf("starting");
+clear all
+close all
+clc
+
+load('InputData2.mat')
+nNodes= size(Nodes,1);
+nLinks= size(Links,1);
+nFlows= size(T1,1);
+
+k = 2;
+sP = cell(1, nFlows);
+nSP = zeros(1, nFlows);
+for f = 1 : nFlows
+    [shortestPath, totalCost] = kShortestPath(L,T1(f,1),T1(f,2),k);
+    sP{f}= shortestPath;
+    nSP(f)= length(totalCost);
+end
+
+t = tic;
+timeLimit = 15;
+bestLoad = inf;
+contador = 0;
+somador = 0;
+alfa = 1;
+bestEnergy = inf;
+while toc(t) < timeLimit
+    % greedy randomized start
+    [sol, load, Loads, energy] = greedyRandomizedStrategy(nNodes, Links, T1, sP, nSP, L, alfa);
+ 
+    while energy == inf
+        [sol, load, Loads, energy] = greedyRandomizedStrategy(nNodes, Links, T1, sP, nSP, L, alfa);
+    end
+
+    [sol, load, Loads, energy] = HillClimbingStrategy(nNodes, Links, T1, sP, nSP, sol, load, Loads, energy, L, alfa);
+    if energy < bestEnergy
+        bestSol = sol;
+        bestLoad = load;
+        bestLoads = Loads;
+        bestEnergy = energy;
+        bestLoadTime = toc(t);
+    end
+    contador = contador + 1;
+end
+
+sleepy_nodes = "";
+
+
+fprintf('E = %.2f\tW = %.2f Gbps\tNo. sols = %d\ttime = %.2f\n', bestEnergy, bestLoad, contador, bestLoadTime);

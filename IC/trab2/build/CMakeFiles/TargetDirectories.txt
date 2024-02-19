@@ -1,0 +1,3 @@
+/home/rafael/Desktop/IC/trab2/build/CMakeFiles/ex1.dir
+/home/rafael/Desktop/IC/trab2/build/CMakeFiles/edit_cache.dir
+/home/rafael/Desktop/IC/trab2/build/CMakeFiles/rebuild_cache.dir

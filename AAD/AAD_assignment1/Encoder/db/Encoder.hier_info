@@ -1,0 +1,317 @@
+|Encoder
+dIn[0] => gateXOr2:xorPorta1.x0
+dIn[0] => gateXOr2:xorPorta2.x0
+dIn[0] => dOut[8].DATAIN
+dIn[1] => gateXOr2:xorPorta3.x0
+dIn[1] => gateXOr2:xorPorta12.x0
+dIn[1] => dOut[9].DATAIN
+dIn[2] => gateXOr2:xorPorta1.x1
+dIn[2] => gateXOr2:xorPorta4.x0
+dIn[2] => dOut[10].DATAIN
+dIn[3] => gateXOr2:xorPorta2.x1
+dIn[3] => gateXOr2:xorPorta5.x0
+dIn[3] => dOut[11].DATAIN
+dIn[4] => gateXOr2:xorPorta6.x0
+dIn[4] => gateXOr2:xorPorta9.x0
+dIn[4] => dOut[12].DATAIN
+dIn[5] => gateXOr2:xorPorta7.x0
+dIn[5] => gateXOr2:xorPorta8.x0
+dIn[5] => gateXOr2:xorPortaa7a10a5.x1
+dIn[5] => dOut[13].DATAIN
+dIn[6] => gateXOr2:xorPorta5.x1
+dIn[6] => gateXOr2:xorPorta10.x0
+dIn[6] => dOut[14].DATAIN
+dIn[7] => gateXOr2:xorPorta9.x1
+dIn[7] => gateXOr2:xorPortaa7a10.x0
+dIn[7] => gateXOr2:xorPorta7a7.x1
+dIn[7] => dOut[15].DATAIN
+dIn[8] => gateXOr2:xorPorta10.x1
+dIn[8] => gateXOr2:xorPortaa8a11.x0
+dIn[8] => dOut[16].DATAIN
+dIn[9] => gateXOr2:xorPorta11.x0
+dIn[9] => gateXOr2:xorPortaa9a12.x0
+dIn[9] => dOut[17].DATAIN
+dIn[10] => gateXOr2:xorPorta12.x1
+dIn[10] => gateXOr2:xorPortaa7a10.x1
+dIn[10] => dOut[18].DATAIN
+dIn[11] => gateXOr2:xorPorta4.x1
+dIn[11] => gateXOr2:xorPortaa8a11.x1
+dIn[11] => dOut[19].DATAIN
+dIn[12] => gateXOr2:xorPorta7.x1
+dIn[12] => gateXOr2:xorPortaa9a12.x1
+dIn[12] => dOut[20].DATAIN
+dIn[13] => gateXOr2:xorPorta3.x1
+dIn[13] => gateXOr2:xorPorta11.x1
+dIn[13] => dOut[21].DATAIN
+dIn[14] => gateXOr2:xorPorta6.x1
+dIn[14] => gateXOr2:xorPortaa8a11a14.x1
+dIn[14] => dOut[22].DATAIN
+dIn[15] => gateXOr2:xorPorta8.x1
+dIn[15] => gateXOr2:xorPortaa9a12a15.x1
+dIn[15] => dOut[23].DATAIN
+dOut[0] << gateXOr2:xorRemainder0.y
+dOut[1] << gateXOr2:xorRemainder1.y
+dOut[2] << gateXOr2:xorRemainder2.y
+dOut[3] << gateXOr2:xorRemainder3.y
+dOut[4] << gateXOr2:xorRemainder4.y
+dOut[5] << gateXOr2:xorRemainder5.y
+dOut[6] << gateXOr2:xorRemainder6.y
+dOut[7] << gateXOr2:xorRemainder7.y
+dOut[8] << dIn[0].DB_MAX_OUTPUT_PORT_TYPE
+dOut[9] << dIn[1].DB_MAX_OUTPUT_PORT_TYPE
+dOut[10] << dIn[2].DB_MAX_OUTPUT_PORT_TYPE
+dOut[11] << dIn[3].DB_MAX_OUTPUT_PORT_TYPE
+dOut[12] << dIn[4].DB_MAX_OUTPUT_PORT_TYPE
+dOut[13] << dIn[5].DB_MAX_OUTPUT_PORT_TYPE
+dOut[14] << dIn[6].DB_MAX_OUTPUT_PORT_TYPE
+dOut[15] << dIn[7].DB_MAX_OUTPUT_PORT_TYPE
+dOut[16] << dIn[8].DB_MAX_OUTPUT_PORT_TYPE
+dOut[17] << dIn[9].DB_MAX_OUTPUT_PORT_TYPE
+dOut[18] << dIn[10].DB_MAX_OUTPUT_PORT_TYPE
+dOut[19] << dIn[11].DB_MAX_OUTPUT_PORT_TYPE
+dOut[20] << dIn[12].DB_MAX_OUTPUT_PORT_TYPE
+dOut[21] << dIn[13].DB_MAX_OUTPUT_PORT_TYPE
+dOut[22] << dIn[14].DB_MAX_OUTPUT_PORT_TYPE
+dOut[23] << dIn[15].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta1
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta2
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta3
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta4
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta5
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta6
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta7
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta8
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta9
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta10
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta11
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta12
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPortaa9a12
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPortaa8a11
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPortaa7a10
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta23
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta7a7
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta35
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta89
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta16
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta57
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta49
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPortaa9a12a15
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta125
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPortaa8a11a14
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta111
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPortaa7a10a5
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta210
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta310
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta894
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta5712
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorPorta21011
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorRemainder0
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorRemainder1
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorRemainder2
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorRemainder3
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorRemainder4
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorRemainder5
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorRemainder6
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Encoder|gateXOr2:xorRemainder7
+x0 => y.IN0
+x1 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
